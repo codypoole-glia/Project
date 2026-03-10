@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advantages - Sight</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32">
+                    <rect x="2" y="2" width="8" height="8" fill="currentColor"/>
+                    <rect x="12" y="2" width="8" height="8" fill="currentColor"/>
+                    <rect x="22" y="2" width="8" height="8" fill="currentColor"/>
+                    <rect x="2" y="12" width="8" height="8" fill="currentColor"/>
+                    <rect x="12" y="12" width="8" height="8" fill="currentColor"/>
+                    <rect x="22" y="12" width="8" height="8" fill="currentColor"/>
+                    <rect x="2" y="22" width="8" height="8" fill="currentColor"/>
+                    <rect x="12" y="22" width="8" height="8" fill="currentColor"/>
+                    <rect x="22" y="22" width="8" height="8" fill="currentColor"/>
+                </svg>
+                <span>SIGHT</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="accounts.html">ABOUT US</a></li>
+                <li><a href="transfers.html" class="active">ADVANTAGES</a></li>
+                <li><a href="investments.html">MOBILE APP</a></li>
+            </ul>
+            <button class="btn-signup">SIGN UP</button>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Instant Transfers</h1>
+        <p>Send money at the speed of light</p>
+    </section>
+
+    <section class="transfer-section">
+        <div class="transfer-form-container">
+            <form class="transfer-form">
+                <div class="form-group">
+                    <label>From Account</label>
+                    <select class="form-control">
+                        <option>Primary Checking (****7892) - $24,567.89</option>
+                        <option>High-Yield Savings (****3421) - $89,234.12</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>To</label>
+                    <input type="text" class="form-control" placeholder="Account number, email, or phone">
+                </div>
+
+                <div class="form-group">
+                    <label>Amount</label>
+                    <div class="amount-input">
+                        <span class="currency">$</span>
+                        <input type="number" class="form-control" placeholder="0.00">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Message (Optional)</label>
+                    <input type="text" class="form-control" placeholder="What's this for?">
+                </div>
+
+                <div class="transfer-speed">
+                    <div class="speed-option active">
+                        <input type="radio" name="speed" id="instant" checked>
+                        <label for="instant">
+                            <span class="speed-name">⚡ Instant</span>
+                            <span class="speed-time">< 1 second</span>
+                        </label>
+                    </div>
+                    <div class="speed-option">
+                        <input type="radio" name="speed" id="standard">
+                        <label for="standard">
+                            <span class="speed-name">Standard</span>
+                            <span class="speed-time">1-2 business days</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary btn-large">Send Money</button>
+            </form>
+        </div>
+
+        <div class="recent-transfers">
+            <h3>Recent Transfers</h3>
+            <div class="transfer-item">
+                <div class="transfer-info">
+                    <span class="recipient">Sarah Johnson</span>
+                    <span class="date">Today, 2:34 PM</span>
+                </div>
+                <span class="transfer-amount sent">-$150.00</span>
+            </div>
+            <div class="transfer-item">
+                <div class="transfer-info">
+                    <span class="recipient">Tech Corp Inc.</span>
+                    <span class="date">Yesterday</span>
+                </div>
+                <span class="transfer-amount received">+$3,200.00</span>
+            </div>
+            <div class="transfer-item">
+                <div class="transfer-info">
+                    <span class="recipient">Mike Chen</span>
+                    <span class="date">Mar 7</span>
+                </div>
+                <span class="transfer-amount sent">-$75.50</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Sight Banking. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

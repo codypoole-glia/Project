@@ -18,6 +18,20 @@ if (transferForm) {
     });
 }
 
+// Open Deposit form handling
+function selectAccountType(type) {
+    document.getElementById('depositForm').style.display = 'block';
+    document.getElementById('depositForm').scrollIntoView({ behavior: 'smooth' });
+}
+
+const depositForm = document.getElementById('depositForm');
+if (depositForm) {
+    depositForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Account application submitted! You will receive a confirmation email shortly.');
+    });
+}
+
 // Speed option selection
 document.querySelectorAll('.speed-option').forEach(option => {
     option.addEventListener('click', function() {

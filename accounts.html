@@ -26,9 +26,9 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">HOME</a></li>
-                <li><a href="accounts.html" class="active">ABOUT US</a></li>
-                <li><a href="transfers.html">ADVANTAGES</a></li>
-                <li><a href="investments.html">MOBILE APP</a></li>
+                <li><a href="accounts.html" class="active">YOUR ACCOUNTS</a></li>
+                <li><a href="transfers.html">TRANSFER FUNDS</a></li>
+                <li><a href="open-deposit.html">OPEN DEPOSIT</a></li>
             </ul>
             <button class="btn-signup">SIGN UP</button>
         </div>
@@ -36,13 +36,13 @@
 
     <section class="page-header">
         <h1>Your Accounts</h1>
-        <p>Manage all your finances in one place</p>
+        <p>Manage your finances with ease</p>
     </section>
 
     <section class="accounts-section">
         <div class="account-card primary">
             <div class="account-header">
-                <h3>Primary Checking</h3>
+                <h3>💳 Checking Account</h3>
                 <span class="account-number">****7892</span>
             </div>
             <div class="balance">
@@ -50,14 +50,14 @@
                 <span class="amount">$24,567.89</span>
             </div>
             <div class="account-actions">
-                <button class="btn-secondary">Transfer</button>
-                <button class="btn-secondary">Details</button>
+                <button class="btn-secondary" onclick="window.location.href='transfers.html'">Transfer</button>
+                <button class="btn-secondary">View Details</button>
             </div>
         </div>
 
         <div class="account-card savings">
             <div class="account-header">
-                <h3>High-Yield Savings</h3>
+                <h3>💰 High-Yield Savings</h3>
                 <span class="account-number">****3421</span>
             </div>
             <div class="balance">
@@ -70,34 +70,20 @@
                     <span class="stat-value">4.5%</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-label">Interest Earned</span>
-                    <span class="stat-value">$342.18</span>
+                    <span class="stat-label">Interest Earned (YTD)</span>
+                    <span class="stat-value">$3,421.18</span>
                 </div>
             </div>
             <div class="account-actions">
-                <button class="btn-secondary">Transfer</button>
-                <button class="btn-secondary">Details</button>
+                <button class="btn-secondary" onclick="window.location.href='transfers.html'">Transfer</button>
+                <button class="btn-secondary">View Details</button>
             </div>
         </div>
 
-        <div class="account-card crypto">
-            <div class="account-header">
-                <h3>Crypto Wallet</h3>
-                <span class="account-number">****9876</span>
-            </div>
-            <div class="balance">
-                <span class="label">Total Value</span>
-                <span class="amount">$12,890.45</span>
-            </div>
-            <div class="crypto-holdings">
-                <div class="holding">BTC: 0.234</div>
-                <div class="holding">ETH: 3.45</div>
-                <div class="holding">SOL: 45.2</div>
-            </div>
-            <div class="account-actions">
-                <button class="btn-secondary">Trade</button>
-                <button class="btn-secondary">Details</button>
-            </div>
+        <div class="total-balance-card">
+            <h3>Total Balance</h3>
+            <div class="total-amount">$113,801.01</div>
+            <button class="btn-primary" onclick="window.location.href='open-deposit.html'">Open New Account</button>
         </div>
     </section>
 

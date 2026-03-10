@@ -292,14 +292,12 @@ body {
 .page-header h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--light);
 }
 
 .page-header p {
     font-size: 1.2rem;
-    color: var(--gray);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .accounts-section {
@@ -728,4 +726,210 @@ footer {
     .investment-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Open Deposit Page Styles */
+.open-deposit-section {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.deposit-form-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 3rem;
+    color: var(--dark);
+}
+
+.deposit-form-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--dark);
+}
+
+.account-type-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.account-type-card {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.account-type-card.featured {
+    border-color: var(--primary);
+    background: rgba(90, 154, 147, 0.05);
+}
+
+.featured-badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: var(--secondary);
+    color: white;
+    padding: 0.25rem 1rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.account-type-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.account-type-card h3 {
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+}
+
+.account-features {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.account-features p {
+    margin: 0.75rem 0;
+    color: #495057;
+}
+
+.deposit-form {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid #e9ecef;
+}
+
+.deposit-form h3 {
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.deposit-form .form-control {
+    background: white;
+    border: 1px solid #ced4da;
+    color: var(--dark);
+}
+
+.deposit-form .form-control:focus {
+    border-color: var(--primary);
+}
+
+.deposit-form small {
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+.deposit-form label {
+    color: var(--dark);
+}
+
+/* Total Balance Card */
+.total-balance-card {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    color: white;
+}
+
+.total-balance-card h3 {
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.total-amount {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.total-balance-card .btn-primary {
+    background: white;
+    color: var(--primary);
+}
+
+.total-balance-card .btn-primary:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Improved text readability */
+.transfer-form-container,
+.recent-transfers {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(90, 154, 147, 0.3);
+    color: var(--dark);
+}
+
+.transfer-form-container h3,
+.recent-transfers h3 {
+    color: var(--dark);
+}
+
+.transfer-form .form-control {
+    background: white;
+    border: 1px solid #ced4da;
+    color: var(--dark);
+}
+
+.transfer-form label {
+    color: var(--dark);
+}
+
+.recipient {
+    color: var(--dark);
+}
+
+.speed-option label {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+}
+
+.speed-option.active label,
+.speed-option input:checked + label {
+    border-color: var(--primary);
+    background: rgba(90, 154, 147, 0.1);
+}
+
+.speed-name {
+    color: var(--dark);
+}
+
+.speed-time {
+    color: #6c757d;
+}
+
+.account-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(90, 154, 147, 0.3);
+}
+
+.account-card h3 {
+    color: var(--dark);
+}
+
+.account-number {
+    color: #6c757d;
+}
+
+.balance .label {
+    color: #6c757d;
+}
+
+.stat-label {
+    color: #6c757d;
 }

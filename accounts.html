@@ -26,16 +26,17 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">HOME</a></li>
-                <li><a href="accounts.html" class="active">YOUR ACCOUNTS</a></li>
-                <li><a href="transfers.html">TRANSFER FUNDS</a></li>
-                <li><a href="open-deposit.html">OPEN DEPOSIT</a></li>
+                <li><a href="accounts.html" class="active">MY ACCOUNTS</a></li>
+                <li><a href="transfers.html">TRANSFERS</a></li>
+                <li><a href="transactions.html">TRANSACTIONS</a></li>
+                <li><a href="open-deposit.html">OPEN ACCOUNT</a></li>
             </ul>
             <button class="btn-signup">SIGN UP</button>
         </div>
     </nav>
 
     <section class="page-header">
-        <h1>Your Accounts</h1>
+        <h1>My Accounts</h1>
         <p>Manage your finances with ease</p>
     </section>
 
@@ -49,9 +50,20 @@
                 <span class="label">Available Balance</span>
                 <span class="amount">$24,567.89</span>
             </div>
+            <div class="account-quick-stats">
+                <div class="quick-stat">
+                    <span class="stat-label">Last Transaction</span>
+                    <span class="stat-value">Today, 2:34 PM</span>
+                </div>
+                <div class="quick-stat">
+                    <span class="stat-label">Pending</span>
+                    <span class="stat-value">$125.00</span>
+                </div>
+            </div>
             <div class="account-actions">
                 <button class="btn-secondary" onclick="window.location.href='transfers.html'">Transfer</button>
-                <button class="btn-secondary">View Details</button>
+                <button class="btn-secondary" onclick="viewTransactions('7892')">Transactions</button>
+                <button class="btn-secondary" onclick="downloadStatement('7892')">Statement</button>
             </div>
         </div>
 
@@ -76,7 +88,8 @@
             </div>
             <div class="account-actions">
                 <button class="btn-secondary" onclick="window.location.href='transfers.html'">Transfer</button>
-                <button class="btn-secondary">View Details</button>
+                <button class="btn-secondary" onclick="viewTransactions('3421')">Transactions</button>
+                <button class="btn-secondary" onclick="downloadStatement('3421')">Statement</button>
             </div>
         </div>
 
@@ -84,6 +97,45 @@
             <h3>Total Balance</h3>
             <div class="total-amount">$113,801.01</div>
             <button class="btn-primary" onclick="window.location.href='open-deposit.html'">Open New Account</button>
+        </div>
+
+        <div class="recent-activity-card">
+            <h3>Recent Activity</h3>
+            <div class="activity-list">
+                <div class="activity-item">
+                    <div class="activity-icon">🛒</div>
+                    <div class="activity-info">
+                        <span class="activity-merchant">Whole Foods Market</span>
+                        <span class="activity-date">Today, 2:34 PM</span>
+                    </div>
+                    <span class="activity-amount debit">-$87.43</span>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">💼</div>
+                    <div class="activity-info">
+                        <span class="activity-merchant">Salary Deposit</span>
+                        <span class="activity-date">Mar 8</span>
+                    </div>
+                    <span class="activity-amount credit">+$4,200.00</span>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">⚡</div>
+                    <div class="activity-info">
+                        <span class="activity-merchant">Electric Company</span>
+                        <span class="activity-date">Mar 7</span>
+                    </div>
+                    <span class="activity-amount debit">-$156.78</span>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">🍕</div>
+                    <div class="activity-info">
+                        <span class="activity-merchant">Pizza Palace</span>
+                        <span class="activity-date">Mar 6</span>
+                    </div>
+                    <span class="activity-amount debit">-$32.50</span>
+                </div>
+            </div>
+            <button class="btn-link" onclick="window.location.href='transactions.html'">View All Transactions →</button>
         </div>
     </section>
 

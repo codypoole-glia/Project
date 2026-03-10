@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions - gBank</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script async src="https://api.glia.com/salemove_integration.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32">
+                    <rect x="2" y="2" width="8" height="8" fill="currentColor"/>
+                    <rect x="12" y="2" width="8" height="8" fill="currentColor"/>
+                    <rect x="22" y="2" width="8" height="8" fill="currentColor"/>
+                    <rect x="2" y="12" width="8" height="8" fill="currentColor"/>
+                    <rect x="12" y="12" width="8" height="8" fill="currentColor"/>
+                    <rect x="22" y="12" width="8" height="8" fill="currentColor"/>
+                    <rect x="2" y="22" width="8" height="8" fill="currentColor"/>
+                    <rect x="12" y="22" width="8" height="8" fill="currentColor"/>
+                    <rect x="22" y="22" width="8" height="8" fill="currentColor"/>
+                </svg>
+                <span>gBank</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="accounts.html">MY ACCOUNTS</a></li>
+                <li><a href="transfers.html">TRANSFERS</a></li>
+                <li><a href="transactions.html" class="active">TRANSACTIONS</a></li>
+                <li><a href="open-deposit.html">OPEN ACCOUNT</a></li>
+            </ul>
+            <button class="btn-signup">SIGN UP</button>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Transaction History</h1>
+        <p>View and manage all your transactions</p>
+    </section>
+
+    <section class="transactions-section">
+        <div class="transactions-filters">
+            <div class="filter-group">
+                <label>Account</label>
+                <select class="form-control" id="accountFilter">
+                    <option value="all">All Accounts</option>
+                    <option value="7892">Checking (****7892)</option>
+                    <option value="3421">Savings (****3421)</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Date Range</label>
+                <select class="form-control" id="dateFilter">
+                    <option value="30">Last 30 Days</option>
+                    <option value="60">Last 60 Days</option>
+                    <option value="90">Last 90 Days</option>
+                    <option value="custom">Custom Range</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Type</label>
+                <select class="form-control" id="typeFilter">
+                    <option value="all">All Types</option>
+                    <option value="debit">Debits</option>
+                    <option value="credit">Credits</option>
+                    <option value="pending">Pending</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Search</label>
+                <input type="text" class="form-control" placeholder="Search transactions..." id="searchInput">
+            </div>
+        </div>
+
+        <div class="transactions-container">
+            <div class="transaction-item" data-id="txn001">
+                <div class="transaction-icon">🛒</div>
+                <div class="transaction-details">
+                    <div class="transaction-merchant">Whole Foods Market</div>
+                    <div class="transaction-meta">
+                        <span class="transaction-date">Today, 2:34 PM</span>
+                        <span class="transaction-account">Checking ****7892</span>
+                    </div>
+                </div>
+                <div class="transaction-right">
+                    <div class="transaction-amount debit">-$87.43</div>
+                    <button class="btn-dispute" onclick="openDisputeModal('txn001')">Dispute</button>
+                </div>
+            </div>
+
+            <div class="transaction-item" data-id="txn002">
+                <div class="transaction-icon">💼</div>
+                <div class="transaction-details">
+                    <div class="transaction-merchant">Salary Deposit - Tech Corp</div>
+                    <div class="transaction-meta">
+                        <span class="transaction-date">Mar 8, 9:00 AM</span>
+                        <span class="transaction-account">Checking ****7892</span>
+                    </div>
+                </div>
+                <div class="transaction-right">
+                    <div class="transaction-amount credit">+$4,200.00</div>
+                    <span class="transaction-status completed">Completed</span>
+                </div>
+            </div>
+
+            <div class="transaction-item" data-id="txn003">
+                <div class="transaction-icon">⚡</div>
+                <div class="transaction-details">
+                    <div class="transaction-merchant">Electric Company</div>
+                    <div class="transaction-meta">
+                        <span class="transaction-date">Mar 7, 3:15 PM</span>
+                        <span class="transaction-account">Checking ****7892</span>
+                    </div>
+                </div>
+                <div class="transaction-right">
+                    <div class="transaction-amount debit">-$156.78</div>
+                    <button class="btn-dispute" onclick="openDisputeModal('txn003')">Dispute</button>
+                </div>
+            </div>
+
+            <div class="transaction-item pending" data-id="txn004">
+                <div class="transaction-icon">🍕</div>
+                <div class="transaction-details">
+                    <div class="transaction-merchant">Pizza Palace</div>
+                    <div class="transaction-meta">
+                        <span class="transaction-date">Mar 6, 7:45 PM</span>
+                        <span class="transaction-account">Checking ****7892</span>
+                    </div>
+                </div>
+                <div class="transaction-right">
+                    <div class="transaction-amount debit">-$32.50</div>
+                    <span class="transaction-status pending">Pending</span>
+                </div>
+            </div>
+
+            <div class="transaction-item" data-id="txn005">
+                <div class="transaction-icon">🚗</div>
+                <div class="transaction-details">
+                    <div class="transaction-merchant">Shell Gas Station</div>
+                    <div class="transaction-meta">
+                        <span class="transaction-date">Mar 5, 8:20 AM</span>
+                        <span class="transaction-account">Checking ****7892</span>
+                    </div>
+                </div>
+                <div class="transaction-right">
+                    <div class="transaction-amount debit">-$65.00</div>
+                    <button class="btn-dispute" onclick="openDisputeModal('txn005')">Dispute</button>
+                </div>
+            </div>
+
+            <div class="transaction-item" data-id="txn006">
+                <div class="transaction-icon">📱</div>
+                <div class="transaction-details">
+                    <div class="transaction-merchant">Mobile Phone Bill</div>
+                    <div class="transaction-meta">
+                        <span class="transaction-date">Mar 4, 12:00 PM</span>
+                        <span class="transaction-account">Checking ****7892</span>
+                    </div>
+                </div>
+                <div class="transaction-right">
+                    <div class="transaction-amount debit">-$89.99</div>
+                    <button class="btn-dispute" onclick="openDisputeModal('txn006')">Dispute</button>
+                </div>
+            </div>
+
+            <div class="transaction-item" data-id="txn007">
+                <div class="transaction-icon">☕</div>
+                <div class="transaction-details">
+                    <div class="transaction-merchant">Starbucks</div>
+                    <div class="transaction-meta">
+                        <span class="transaction-date">Mar 3, 7:30 AM</span>
+                        <span class="transaction-account">Checking ****7892</span>
+                    </div>
+                </div>
+                <div class="transaction-right">
+                    <div class="transaction-amount debit">-$6.75</div>
+                    <button class="btn-dispute" onclick="openDisputeModal('txn007')">Dispute</button>
+                </div>
+            </div>
+
+            <div class="transaction-item" data-id="txn008">
+                <div class="transaction-icon">🏋️</div>
+                <div class="transaction-details">
+                    <div class="transaction-merchant">Fitness Club Monthly</div>
+                    <div class="transaction-meta">
+                        <span class="transaction-date">Mar 1, 6:00 AM</span>
+                        <span class="transaction-account">Checking ****7892</span>
+                    </div>
+                </div>
+                <div class="transaction-right">
+                    <div class="transaction-amount debit">-$49.99</div>
+                    <button class="btn-dispute" onclick="openDisputeModal('txn008')">Dispute</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <button class="btn-secondary">Previous</button>
+            <span class="page-info">Page 1 of 5</span>
+            <button class="btn-secondary">Next</button>
+        </div>
+    </section>
+
+    <!-- Dispute Modal -->
+    <div id="disputeModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeDisputeModal()">&times;</span>
+            <h2>Dispute Transaction</h2>
+            <div id="disputeTransactionInfo"></div>
+            <form id="disputeForm">
+                <div class="form-group">
+                    <label>Reason for Dispute *</label>
+                    <select class="form-control" required>
+                        <option value="">Select a reason</option>
+                        <option value="unauthorized">Unauthorized Transaction</option>
+                        <option value="duplicate">Duplicate Charge</option>
+                        <option value="incorrect">Incorrect Amount</option>
+                        <option value="not_received">Product/Service Not Received</option>
+                        <option value="defective">Defective Product/Service</option>
+                        <option value="cancelled">Cancelled Transaction</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Description *</label>
+                    <textarea class="form-control" rows="4" placeholder="Please provide details about why you're disputing this transaction..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Supporting Documents (Optional)</label>
+                    <input type="file" class="form-control" multiple>
+                    <small>Upload receipts, emails, or other supporting documents</small>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeDisputeModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">Submit Dispute</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 gBank Banking. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

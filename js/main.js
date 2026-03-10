@@ -63,4 +63,114 @@ if (document.querySelector('.balance')) {
     setInterval(updateBalances, 5000);
 }
 
-console.log('NeoBank initialized - Welcome to the future of banking!');
+// Transaction filtering
+const accountFilter = document.getElementById('accountFilter');
+const dateFilter = document.getElementById('dateFilter');
+const typeFilter = document.getElementById('typeFilter');
+const searchInput = document.getElementById('searchInput');
+
+if (accountFilter) {
+    [accountFilter, dateFilter, typeFilter].forEach(filter => {
+        filter.addEventListener('change', filterTransactions);
+    });
+}
+
+if (searchInput) {
+    searchInput.addEventListener('input', filterTransactions);
+}
+
+function filterTransactions() {
+    const transactions = document.querySelectorAll('.transaction-item');
+    const accountValue = accountFilter?.value || 'all';
+    const typeValue = typeFilter?.value || 'all';
+    const searchValue = searchInput?.value.toLowerCase() || '';
+    
+    transactions.forEach(transaction => {
+        const merchant = transaction.querySelector('.transaction-merchant').textContent.toLowerCase();
+        const account = transaction.querySelector('.transaction-account').textContent;
+        const isPending = transaction.classList.contains('pending');
+        const isDebit = transaction.querySelector('.transaction-amount').classList.contains('debit');
+        
+        let show = true;
+        
+        if (accountValue !== 'all' && !account.includes(accountValue)) {
+            show = false;
+        }
+        
+        if (typeValue === 'pending' && !isPending) {
+            show = false;
+        } else if (typeValue === 'debit' && !isDebit) {
+            show = false;
+        } else if (typeValue === 'credit' && isDebit) {
+            show = false;
+        }
+        
+        if (searchValue && !merchant.includes(searchValue)) {
+            show = false;
+        }
+        
+        transaction.style.display = show ? 'flex' : 'none';
+    });
+}
+
+// Dispute Modal Functions
+function openDisputeModal(transactionId) {
+    const modal = document.getElementById('disputeModal');
+    const transaction = document.querySelector(`[data-id="${transactionId}"]`);
+    
+    if (transaction && modal) {
+        const merchant = transaction.querySelector('.transaction-merchant').textContent;
+        const amount = transaction.querySelector('.transaction-amount').textContent;
+        const date = transaction.querySelector('.transaction-date').textContent;
+        
+        const infoDiv = document.getElementById('disputeTransactionInfo');
+        infoDiv.innerHTML = `
+            <strong>Transaction Details:</strong><br>
+            Merchant: ${merchant}<br>
+            Amount: ${amount}<br>
+            Date: ${date}
+        `;
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeDisputeModal() {
+    const modal = document.getElementById('disputeModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Handle dispute form submission
+const disputeForm = document.getElementById('disputeForm');
+if (disputeForm) {
+    disputeForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Dispute submitted successfully! We will review your case and contact you within 3-5 business days.');
+        closeDisputeModal();
+        disputeForm.reset();
+    });
+}
+
+// Close modal when clicking outside
+window.addEventListener('click', (e) => {
+    const modal = document.getElementById('disputeModal');
+    if (e.target === modal) {
+        closeDisputeModal();
+    }
+});
+
+// View transactions for specific account
+function viewTransactions(accountNumber) {
+    window.location.href = `transactions.html?account=${accountNumber}`;
+}
+
+// Download statement
+function downloadStatement(accountNumber) {
+    alert(`Downloading statement for account ****${accountNumber}. In a real app, this would generate a PDF.`);
+}
+
+console.log('gBank initialized - Welcome to modern banking!');

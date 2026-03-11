@@ -47,20 +47,28 @@ floatingCards.forEach((card, index) => {
     card.style.animationDelay = `${index * 2}s`;
 });
 
-// Simulate real-time balance updates (demo only)
-function updateBalances() {
-    const balances = document.querySelectorAll('.balance .amount');
-    balances.forEach(balance => {
-        const currentValue = parseFloat(balance.textContent.replace(/[$,]/g, ''));
-        const change = (Math.random() - 0.5) * 10;
-        const newValue = currentValue + change;
-        balance.textContent = `$${newValue.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
-    });
-}
 
 // Update balances every 5 seconds (demo only)
 if (document.querySelector('.balance')) {
     setInterval(updateBalances, 5000);
+}
+
+// Toggle transaction details
+function toggleTransactionDetails(button) {
+    const transactionItem = button.closest('.transaction-item');
+    const expandedSection = transactionItem.querySelector('.transaction-expanded');
+    
+    // Close all other expanded sections
+    document.querySelectorAll('.transaction-expanded.show').forEach(section => {
+        if (section !== expandedSection) {
+            section.classList.remove('show');
+            section.closest('.transaction-item').querySelector('.expand-btn').classList.remove('expanded');
+        }
+    });
+    
+    // Toggle current section
+    expandedSection.classList.toggle('show');
+    button.classList.toggle('expanded');
 }
 
 // Transaction filtering
@@ -112,56 +120,6 @@ function filterTransactions() {
         transaction.style.display = show ? 'flex' : 'none';
     });
 }
-
-// Dispute Modal Functions
-function openDisputeModal(transactionId) {
-    const modal = document.getElementById('disputeModal');
-    const transaction = document.querySelector(`[data-id="${transactionId}"]`);
-    
-    if (transaction && modal) {
-        const merchant = transaction.querySelector('.transaction-merchant').textContent;
-        const amount = transaction.querySelector('.transaction-amount').textContent;
-        const date = transaction.querySelector('.transaction-date').textContent;
-        
-        const infoDiv = document.getElementById('disputeTransactionInfo');
-        infoDiv.innerHTML = `
-            <strong>Transaction Details:</strong><br>
-            Merchant: ${merchant}<br>
-            Amount: ${amount}<br>
-            Date: ${date}
-        `;
-        
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-function closeDisputeModal() {
-    const modal = document.getElementById('disputeModal');
-    if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
-}
-
-// Handle dispute form submission
-const disputeForm = document.getElementById('disputeForm');
-if (disputeForm) {
-    disputeForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Dispute submitted successfully! We will review your case and contact you within 3-5 business days.');
-        closeDisputeModal();
-        disputeForm.reset();
-    });
-}
-
-// Close modal when clicking outside
-window.addEventListener('click', (e) => {
-    const modal = document.getElementById('disputeModal');
-    if (e.target === modal) {
-        closeDisputeModal();
-    }
-});
 
 // View transactions for specific account
 function viewTransactions(accountNumber) {

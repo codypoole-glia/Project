@@ -29,9 +29,13 @@
 
     sm.getApi({ version: 'v1' }).then(function (glia) {
       glia.updateInformation({
+        customAttributesUpdateMethod: 'merge',
         customAttributes: { location: locationValue }
+      }).then(function () {
+        console.log('[geo-location] Glia custom attribute set: location=' + locationValue);
+      }).catch(function (error) {
+        console.error('[geo-location] Glia updateInformation error:', error);
       });
-      console.log('[geo-location] Glia custom attribute set: location=' + locationValue);
     }).catch(function (err) {
       console.error('[geo-location] Glia API error:', err);
     });

@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gBank - Banking You Want To Use</title>
     <link rel="stylesheet" href="css/style.css">
+    <script>
+		//Read idtoken from query parameter with the same name.
+		const params = new Proxy(new URLSearchParams(window.location.search), {
+			get: (searchParams, prop) => searchParams.get(prop),
+		});
+		const idToken = params.idtoken;
+		window.getGliaContext = () => ({ idToken });
+    </script>
     <script async src="https://api.glia.com/salemove_integration.js"></script>
 </head>
 <body>

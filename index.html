@@ -38,6 +38,7 @@
                 <li><a href="transfers.html">TRANSFERS</a></li>
                 <li><a href="transactions.html">TRANSACTIONS</a></li>
                 <li><a href="open-deposit.html">OPEN ACCOUNT</a></li>
+                <li><a href="community-events.html">COMMUNITY EVENTS</a></li>
             </ul>
             <button class="btn-signup">SIGN UP</button>
         </div>
@@ -97,7 +98,44 @@
         <p>&copy; 2026 gBank Banking. All rights reserved.</p>
     </footer>
 
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal" role="dialog" aria-labelledby="signupModalTitle" aria-modal="true"></div>
+        <div class="modal-content" style="max-width: 420px;">
+            <span class="modal-close" id="signupModalClose" role="button" aria-label="Close">&times;</span>
+            <h2 id="signupModalTitle">Sign Up</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupEmail">Email Address</label>
+                    <input type="email" id="signupEmail" class="form-control" placeholder="you@example.com" required
+                        style="background: white; border: 1px solid #ced4da; color: var(--dark);">
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script src="js/main.js"></script>
     <script src="js/geo-location.js"></script>
+    <script>
+        const signupBtn = document.querySelector('.btn-signup');
+        const signupModal = document.getElementById('signupModal');
+        const signupClose = document.getElementById('signupModalClose');
+
+        signupBtn.addEventListener('click', () => signupModal.classList.add('active'));
+        signupClose.addEventListener('click', () => signupModal.classList.remove('active'));
+        signupModal.addEventListener('click', (e) => {
+            if (e.target === signupModal) signupModal.classList.remove('active');
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('signupEmail').value;
+            alert('Thanks for signing up with ' + email);
+            signupModal.classList.remove('active');
+            e.target.reset();
+        });
+    </script>
 </body>
 </html>

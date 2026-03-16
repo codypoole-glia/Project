@@ -149,12 +149,6 @@
     <script>
         var currentEngagement = null;
 
-        sm.getApi({version: 'v1'}).then(function(glia) {
-            glia.addEventListener(glia.EVENTS.ENGAGEMENT_START, function(engagement) {
-                currentEngagement = engagement;
-            });
-        });
-
         document.getElementById('newsletterForm').addEventListener('submit', function(e) {
             e.preventDefault();
             var email = document.getElementById('newsletterEmail').value;
@@ -168,6 +162,14 @@
             this.hidden = true;
             document.getElementById('newsletterSuccess').hidden = false;
         });
+
+        if (typeof sm !== 'undefined') {
+            sm.getApi({version: 'v1'}).then(function(glia) {
+                glia.addEventListener(glia.EVENTS.ENGAGEMENT_START, function(engagement) {
+                    currentEngagement = engagement;
+                });
+            });
+        }
     </script>
 </body>
 </html>

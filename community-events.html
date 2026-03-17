@@ -151,6 +151,8 @@
         </div>
     </section>
 
+    <div id="operator-message-preview" style="text-align: center; color: #666; font-style: italic; min-height: 24px; padding-bottom: 10px;"></div>
+
     <footer>
         <p>&copy; 2026 gBank Banking. All rights reserved.</p>
     </footer>
@@ -173,12 +175,28 @@
             this.hidden = true;
             document.getElementById('newsletterSuccess').hidden = false;
         });
+        
 
         function initializeGlia() {
             if (typeof sm !== 'undefined') {
                 sm.getApi({ version: 'v1' }).then(function (glia) {
                     glia.addEventListener(glia.EVENTS.ENGAGEMENT_START, function (engagement) {
                         currentEngagement = engagement;
+
+                        // Operator Typing Status Integration
+                        var operatorMessagePreview = document.querySelector('#operator-message-preview');
+                        if (operatorMessagePreview) {
+                            engagement.chat.addEventListener(
+                                engagement.chat.EVENTS.OPERATOR_TYPING_STATUS_UPDATE,
+                                function(status) {
+                                    if (status.typing) {
+                                        operatorMessagePreview.textContent = '...';
+                                    } else {
+                                        operatorMessagePreview.textContent = '';
+                                    }
+                                }
+                            );
+                        }
                     });
                 });
             } else {
@@ -187,8 +205,7 @@
             }
         }
 
-        // Start trying to initialize Glia
-        // Wait for DOM to be fully loaded before executing Glia integration
+        // Start trying to initialize Glia once DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
             initializeGlia();
         });
